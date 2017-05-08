@@ -5,6 +5,6 @@ if (process.env.S3_BUCKET === undefined) {
   throw Error('Environment variable S3_BUCKET must be set!');
 }
 
-service(process.env.S3_BUCKET, 'photos/publi').getPhotoList().then((res) => {
+service(process.env.S3_BUCKET, 'photos/public').getPhotoList().then((res) => {
   logger.info(res);
 });

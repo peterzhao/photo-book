@@ -1,0 +1,9 @@
+<ul>
+  <% photos.forEach((photo) => { %>
+    <li>
+      <a href="<%= photo.large %>">
+        <img src="<%= photo.thumnail %>"></img>
+      </a>
+    </li>
+  <% }) %>
+</ul>
