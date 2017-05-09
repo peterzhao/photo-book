@@ -18,6 +18,7 @@ requiredEnvs.forEach((variable) => {
 const { S3_BUCKET, S3_BUCKET_PATH } = process.env;
 
 const app = express();
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
     res.render('home', { photos });
   });
 });
+
 
 app.listen(8888, () => {
   logger.info('listening on 8888');

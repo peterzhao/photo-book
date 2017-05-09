@@ -27,12 +27,12 @@ describe('photoService', () => {
     };
     const photoList = [
       {
-        thumnail: 'https://s3-ca-central-1/myBucket/photos/public/75x100/Portrait/2017/IMG_1.jpg',
+        thumbnail: 'https://s3-ca-central-1/myBucket/photos/public/75x100/Portrait/2017/IMG_1.jpg',
         large: 'https://s3-ca-central-1/myBucket/photos/public/768x1024/Portrait/2017/IMG_1.jpg',
         category: 'Portrait'
       },
       {
-        thumnail: 'https://s3-ca-central-1/myBucket/photos/public/75x100/Travel/2017/IMG_2.jpg',
+        thumbnail: 'https://s3-ca-central-1/myBucket/photos/public/75x100/Travel/2017/IMG_2.jpg',
         large: 'https://s3-ca-central-1/myBucket/photos/public/768x1024/Travel/2017/IMG_2.jpg',
         category: 'Travel'
       }
