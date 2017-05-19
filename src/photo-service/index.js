@@ -10,12 +10,12 @@ module.exports = (bucket, path, s3 = s3Default) => {
   const transform = (photos) => {
     const result = [];
     photos.Contents.forEach((content) => {
-      const thumbnail = `https://${s3.endpoint}/${bucket}/${content.Key}`;
-      if (thumbnail.indexOf('75x100') > -1) {
-        const large = thumbnail.replace('75x100', '768x1024');
-        const category = thumbnail.match(/75x100\/([a-zA-Z0-9]+)/)[1];
+      const thumnail = `https://${s3.endpoint}/${bucket}/${content.Key}`;
+      if (thumnail.indexOf('75x100') > -1) {
+        const large = thumnail.replace('75x100', '768x1024');
+        const category = thumnail.match(/75x100\/([a-zA-Z0-9]+)/)[1];
         result.push({
-          thumbnail,
+          thumnail,
           large,
           category
         });
