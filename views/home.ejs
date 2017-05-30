@@ -1,9 +1,11 @@
-<ul>
+<div class="my-gallery center fixWith" itemscope itemtype="http://schema.org/ImageGallery">
   <% photos.forEach((photo) => { %>
-    <li>
-      <a href="<%= photo.large %>">
-        <img src="<%= photo.thumnail %>"></img>
-      </a>
-    </li>
+    <div class="thumbnail">
+      <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+        <a href="<%= photo.large %>" itemprop="contentUrl" data-size="768x1024">
+          <img src="<%= photo.thumbnail %>" itemprop="thumbnail" alt="Image description" />
+        </a>
+      </figure>
+    </div>
   <% }) %>
-</ul>
+</div>
