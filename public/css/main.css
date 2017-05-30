@@ -304,7 +304,7 @@ img.img--with_border {
   line-height: 0;
 }
 
-a.gallery__img--main {
+a.gallery-item {
   width: auto;
   height: auto;
 }

@@ -1,75 +1,102 @@
-<div class="row row-heading">
-  <h1>Nina's Photo Gallery</h1>
-</div>
-<div class="row">
-  <div class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
-    <% photos.forEach((photo) => { %>
-      <a href="<%= photo.large %>" data-size="768x1024" data-author="Nina" class="gallery__img--main">
-        <img src="<%= photo.thumbnail %>" alt="" />
-      </a>
-    <% }) %>
+<div class="section section--head">
+  <div class="row row-heading">
+    <h1>Nina's Photo Gallery</h1>
   </div>
+  <div class="row">
+    <div class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
+      <% photos.forEach((photo, index) => { %>
+        <a href="<%= photo.large %>" data-size="768x1024" data-author="Nina" item-index="<%= index %>" class="gallery-item">
+          <img src="<%= photo.thumbnail %>" alt="" />
+        </a>
+      <% }) %>
+    </div>
 
-  <!-- Root element of PhotoSwipe. Must have class pswp. -->
-  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" id="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-      <!-- Background of PhotoSwipe.
-           It's a separate element, as animating opacity is faster than rgba(). -->
-      <div class="pswp__bg"></div>
+        <!-- Background of PhotoSwipe.
+             It's a separate element, as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
 
-      <!-- Slides wrapper with overflow:hidden. -->
-      <div class="pswp__scroll-wrap">
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
 
-          <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
-          <!-- don't modify these 3 pswp__item elements, data is added later on. -->
-          <div class="pswp__container">
-              <div class="pswp__item"></div>
-              <div class="pswp__item"></div>
-              <div class="pswp__item"></div>
-          </div>
+            <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+            <!-- don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
 
-          <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-          <div class="pswp__ui pswp__ui--hidden">
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
 
-              <div class="pswp__top-bar">
+                <div class="pswp__top-bar">
 
-                  <!--  Controls are self-explanatory. Order can be changed. -->
+                    <!--  Controls are self-explanatory. Order can be changed. -->
 
-                  <div class="pswp__counter"></div>
+                    <div class="pswp__counter"></div>
 
-                  <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-                  <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
 
-                  <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 
-                  <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
 
-                  <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                  <!-- element will get class pswp__preloader--active when preloader is running -->
-                  <div class="pswp__preloader">
-                      <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                          <div class="pswp__preloader__donut"></div>
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
                         </div>
-                      </div>
-                  </div>
-              </div>
+                    </div>
+                </div>
 
-              <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                  <div class="pswp__share-tooltip"></div>
-              </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
 
-              <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-              </button>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
 
-              <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-              </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
 
-              <div class="pswp__caption">
-                  <div class="pswp__caption__center"></div>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
               </div>
             </div>
-          </div>
+    </div>
   </div>
 </div>
+
+<script>
+  function initGallery(index) {
+    var pswpElement = $('.pswp')[0];
+    var galleryItems = $('.gallery-item');
+    var items = $.map(galleryItems, function(item) {
+      return {
+        src: $(item).attr('href'),
+        w: 1048,
+        h: 768
+      };
+    });
+    var options = {
+        index: index
+    };
+    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+    gallery.init();
+  }
+  $(function() {
+    $('.gallery-item').bind('click', function(e) {
+      e.preventDefault();
+      initGallery($(this).attr('item-index'));
+    });
+  });
+</script>
