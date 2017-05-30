@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     res.render('home', { photos });
   });
 });
-
+app.use(express.static('public'));
 app.listen(8888, () => {
   logger.info('listening on 8888');
 });
