@@ -18,25 +18,28 @@ describe('photoService', () => {
   it('should get photo list from s3', () => {
     const photoListFromS3 = {
       Contents: [
-        { Key: 'photos/public/180x240/Portrait/2017/IMG_1.jpg' },
-        { Key: 'photos/public/180x240/Travel/2017/IMG_2.jpg' },
-        { Key: 'photos/public/768x1024/Portrait/2017/IMG_1.jpg' },
-        { Key: 'photos/public/768x1024/Travel/2017/IMG_2.jpg' },
-        { Key: 'photos/public/768x1024/Portrait/2017/IMG_3.jpg' }
+        { Key: 'photos/public/Portrait/2017/IMG_1%2Bsmall%2B180x240.jpg' },
+        { Key: 'photos/public/Travel/2017/IMG_2%2Bsmall%2B180x240.jpg' },
+        { Key: 'photos/public/Portrait/2017/IMG_1%2Bmed%2B1047x768.jpg' },
+        { Key: 'photos/public/Travel/2017/IMG_2%2Bmed%2B1047x768.jpg' },
+        { Key: 'photos/public/Portrait/2017/IMG_1%2Blarge%2B1600x1200.jpg' },
+        { Key: 'photos/public/Travel/2017/IMG_2%2Blarge%2B1600x1200.jpg' }
       ]
     };
-    const photoList = [
-      {
-        thumbnail: 'https://s3-ca-central-1/myBucket/photos/public/180x240/Portrait/2017/IMG_1.jpg',
-        large: 'https://s3-ca-central-1/myBucket/photos/public/768x1024/Portrait/2017/IMG_1.jpg',
+    const photoList = {
+      'https://s3-ca-central-1/myBucket/photos/public/Portrait/2017/IMG_1': {
+        small: { path: '%2Bsmall%2B180x240.jpg', w: '180', h: '240' },
+        med: { path: '%2Bmed%2B1047x768.jpg', w: '1047', h: '768' },
+        large: { path: '%2Blarge%2B1600x1200.jpg', w: '1600', h: '1200' },
         category: 'Portrait'
       },
-      {
-        thumbnail: 'https://s3-ca-central-1/myBucket/photos/public/180x240/Travel/2017/IMG_2.jpg',
-        large: 'https://s3-ca-central-1/myBucket/photos/public/768x1024/Travel/2017/IMG_2.jpg',
+      'https://s3-ca-central-1/myBucket/photos/public/Travel/2017/IMG_2': {
+        small: { path: '%2Bsmall%2B180x240.jpg', w: '180', h: '240' },
+        med: { path: '%2Bmed%2B1047x768.jpg', w: '1047', h: '768' },
+        large: { path: '%2Blarge%2B1600x1200.jpg', w: '1600', h: '1200' },
         category: 'Travel'
       }
-    ];
+    };
     s3Stub.api.listObjects.callsArgWith(1, undefined, photoListFromS3);
     return assert.eventually.deepEqual(
       photoService('myBucket', 'photos/public', s3Stub).getPhotoList(),

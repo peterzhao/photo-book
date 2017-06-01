@@ -6,7 +6,7 @@ module.exports = (sourceDir, sourceFile, targetDir, category, maxSize) => {
   exec(`mkdir -p ${targetDir}`);
   const baseName = path.basename(sourceFile, '.jpg');
   const sourcePath = path.join(sourceDir, sourceFile);
-  const targetPath = path.join(targetDir, `${baseName}+${category}`)
+  const targetPath = path.join(targetDir, `${baseName}+${category}`);
   exec(`sips -Z ${maxSize} ${sourcePath} --out ${targetPath}`);
   const size = exec(`sips -g pixelWidth -g pixelHeight ${targetPath} | tail -n 2 | cut -f2 -d':'`, { encoding: 'utf8' }).split('\n').map((element) => { return element.trim(); });
   logger.info(size);
