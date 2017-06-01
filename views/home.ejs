@@ -5,8 +5,14 @@
   <div class="row">
     <div class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
       <% photos.forEach((photo, index) => { %>
-        <a href="<%= photo.large %>" data-size="768x1024" data-author="Nina" item-index="<%= index %>" class="gallery-item">
-          <img src="<%= photo.thumbnail %>" alt="" />
+        <a href="<%= photo.large.url %>"
+          data-w="<%= photo.large.w %>"
+          data-h="<%= photo.large.h %>"
+          data-msrc="<%= photo.med.url %>"
+          data-author="Nina"
+          item-index="<%= index %>"
+          class="gallery-item">
+          <img src="<%= photo.small.url %>" alt="" />
         </a>
       <% }) %>
     </div>
@@ -21,12 +27,13 @@
     var items = $.map(galleryItems, function(item) {
       return {
         src: $(item).attr('href'),
-        w: 1048,
-        h: 768
+        w: parseInt($(item).attr('data-w'), 10),
+        h: parseInt($(item).attr('data-h'), 10),
+        msrc: $(item).attr('data-msrc')
       };
     });
     var options = {
-        index: index
+        index: parseInt(index, 10)
     };
     var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
     gallery.init();
