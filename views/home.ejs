@@ -8,7 +8,6 @@
         <a href="<%= photo.large.url %>"
           data-w="<%= photo.large.w %>"
           data-h="<%= photo.large.h %>"
-          data-msrc="<%= photo.med.url %>"
           data-author="Nina"
           item-index="<%= index %>"
           class="gallery-item">
@@ -28,8 +27,7 @@
       return {
         src: $(item).attr('href'),
         w: parseInt($(item).attr('data-w'), 10),
-        h: parseInt($(item).attr('data-h'), 10),
-        msrc: $(item).attr('data-msrc')
+        h: parseInt($(item).attr('data-h'), 10)
       };
     });
     var options = {

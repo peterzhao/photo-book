@@ -27,6 +27,5 @@ const sourceFiles = readDir.readSync(sourceDir, ['**.jpg']);
 sourceFiles.forEach((sourceFile) => {
   const targetPhotoDir = path.join(targetDir, path.dirname(sourceFile));
   resize(sourceDir, sourceFile, targetPhotoDir, 'large', 1600);
-  resize(sourceDir, sourceFile, targetPhotoDir, 'med', 1024);
-  resize(sourceDir, sourceFile, targetPhotoDir, 'small', 180);
+  resize(sourceDir, sourceFile, targetPhotoDir, 'small', 180, true);
 });
