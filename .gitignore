@@ -3,3 +3,4 @@ set-local-environment.sh
 tmp
 node_modules
 npm-debug.log
+public/css
