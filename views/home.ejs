@@ -1,6 +1,6 @@
 <div class="section section--head">
   <div class="row row-heading">
-    <h1>Nina's Photo Gallery</h1>
+    <h1><%= title %></h1>
   </div>
   <div class="row">
     <div class="gallery" itemscope itemtype="http://schema.org/ImageGallery">
@@ -45,3 +45,6 @@
     });
   });
 </script>
+
+<%- contentFor('head') %>
+<title><%= title %></title>
