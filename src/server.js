@@ -37,6 +37,7 @@ app.get('/', (req, res) => {
     res.render('home', { photos, title });
   });
 });
-app.listen(8888, () => {
-  logger.info('listening on 8888');
+const port = parseInt(process.env.PORT || '8080');
+app.listen(port, () => {
+  logger.info(`listening on ${port}`);
 });
