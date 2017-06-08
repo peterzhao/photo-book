@@ -419,10 +419,35 @@ a.gallery-item {
 }
 
 @media screen and (max-width: 770px) {
-
   .gallery a {
     width: 170px;
     margin: 0 4px 4px 0;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .section--head {
+    padding: 5px 0;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  .gallery a {
+    width: 140px;
+    margin: 0 1px 1px 0;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .section--head {
+    padding: 5px 0;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  .gallery a {
+    width: 150px;
+    margin: 0 1px 1px 0;
   }
 }
 
@@ -444,7 +469,7 @@ a.gallery-item {
     padding: 5px 0;
   }
   h1 {
-    font-size: 25px;
+    font-size: 30px;
   }
   .gallery a {
     width: 95px;
@@ -457,7 +482,7 @@ a.gallery-item {
     padding: 5px 0;
   }
   h1 {
-    font-size: 20px;
+    font-size: 30px;
   }
   .gallery a {
     width: 84px;
