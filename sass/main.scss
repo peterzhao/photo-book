@@ -427,22 +427,40 @@ a.gallery-item {
 }
 
 @media screen and (max-width: 450px) {
+  .section--head {
+    padding: 5px 0;
+  }
+  h1 {
+    font-size: 30px;
+  }
   .gallery a {
-    width: 120px;
+    width: 110px;
     margin: 0 1px 1px 0;
   }
 }
 
 @media screen and (max-width: 380px) {
+  .section--head {
+    padding: 5px 0;
+  }
+  h1 {
+    font-size: 25px;
+  }
   .gallery a {
-    width: 100px;
+    width: 95px;
     margin: 0 1px 1px 0;
   }
 }
 
 @media screen and (max-width: 330px) {
+  .section--head {
+    padding: 5px 0;
+  }
+  h1 {
+    font-size: 20px;
+  }
   .gallery a {
-    width: 92px;
+    width: 84px;
     margin: 0 1px 1px 0;
   }
 }
